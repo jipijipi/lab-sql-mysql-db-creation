@@ -48,10 +48,13 @@ CREATE TABLE salespersons (
 CREATE TABLE invoices (
   `invoice_id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
-  `cars_vehicle_id` INT NOT NULL,
-  `customers_customer_id` INT NOT NULL,
-  `salespersons_staff_id` INT NOT NULL,
+  `cars_vehicle_id` VARCHAR(45) NOT NULL,
+  `customers_customer_id` VARCHAR(45) NOT NULL,
+  `salespersons_staff_id` VARCHAR(45) NOT NULL,
   `internal_invoice_id` INT NOT NULL,
   UNIQUE (internal_invoice_id),
-  PRIMARY KEY (`invoice_id`)
+  PRIMARY KEY (`invoice_id`),
+  FOREIGN KEY (`cars_vehicle_id`) REFERENCES cars(`vin`),
+  FOREIGN KEY (`customers_customer_id`) REFERENCES customers(`internal_customer_id`),
+  FOREIGN KEY (`salespersons_staff_id`) REFERENCES salespersons(`internal_staff_id`)
 );
