@@ -17,6 +17,7 @@ CREATE TABLE cars (
   `year` INT NULL,
   `color` VARCHAR(45) NULL,
   `vin` VARCHAR(45) NOT NULL,
+  UNIQUE (vin),
   PRIMARY KEY (`vehicle_id`)
 );
 
@@ -31,6 +32,7 @@ CREATE TABLE customers (
   `country` VARCHAR(45) NULL,
   `postal_code` VARCHAR(45) NULL,
   `internal_customer_id` VARCHAR(45) NULL,
+  UNIQUE (internal_customer_id),
   PRIMARY KEY (`customer_id`)
 );
 
@@ -39,6 +41,7 @@ CREATE TABLE salespersons (
   `name` VARCHAR(45) NOT NULL,
   `store` VARCHAR(45) NOT NULL,
   `internal_staff_id` VARCHAR(45) NOT NULL,
+  UNIQUE (internal_staff_id),
   PRIMARY KEY (`staff_id`)
 );
 
@@ -48,5 +51,7 @@ CREATE TABLE invoices (
   `cars_vehicle_id` INT NOT NULL,
   `customers_customer_id` INT NOT NULL,
   `salespersons_staff_id` INT NOT NULL,
+  `internal_invoice_id` INT NOT NULL,
+  UNIQUE (internal_invoice_id),
   PRIMARY KEY (`invoice_id`)
 );
